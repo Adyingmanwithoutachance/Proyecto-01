@@ -1,0 +1,190 @@
+:root {
+  /* Paleta de Colores de Lordran */
+  --ds-bg-dark: #080707;
+  --ds-bg-card: #12100e;
+  --ds-bg-panel: #1a1714;
+  
+  --ds-gold-main: #c4a159;
+  --ds-gold-bright: #e6c278;
+  --ds-gold-dim: #7a6332;
+  
+  --ds-text-primary: #d4cebe;
+  --ds-text-muted: #857e72;
+  --ds-text-dark: #4a443a;
+  
+  --ds-bonfire-orange: #d9531e;
+  --ds-bonfire-yellow: #f2a007;
+  --ds-you-died-red: #8b0000;
+  --ds-you-died-glow: #e60000;
+  
+  --ds-border-color: #383025;
+  --ds-border-gold: #8c733e;
+  
+  --ds-font-heading: 'Cinzel', serif;
+  --ds-font-body: 'Fauna One', serif;
+  --ds-font-decorative: 'Cinzel Decorative', serif;
+}
+
+/* Reset Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--ds-bg-dark);
+  color: var(--ds-text-primary);
+  font-family: var(--ds-font-body);
+  line-height: 1.6;
+  background-image: 
+    radial-gradient(circle at 50% 30%, rgba(30, 20, 10, 0.4) 0%, transparent 70%),
+    radial-gradient(circle at 50% 100%, rgba(15, 10, 5, 0.8) 0%, transparent 80%);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Encabezados y Títulos */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ds-font-heading);
+  color: var(--ds-gold-main);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 0 10px rgba(196, 161, 89, 0.2);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--ds-border-gold);
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  color: var(--ds-gold-bright);
+}
+
+/* Párrafos y Texto */
+p {
+  margin-bottom: 1.2rem;
+  color: var(--ds-text-primary);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.text-muted {
+  color: var(--ds-text-muted);
+}
+
+/* Tarjetas y Paneles (Estilo Inventario / Lore) */
+.ds-card {
+  background-color: var(--ds-bg-card);
+  border: 2px solid var(--ds-border-color);
+  outline: 1px solid #000;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(0, 0, 0, 0.6);
+}
+
+/* Esquinas decorativas metálicas */
+.ds-card::before, .ds-card::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--ds-gold-main);
+}
+.ds-card::before { top: 3px; left: 3px; border-right: none; border-bottom: none; }
+.ds-card::after { bottom: 3px; right: 3px; border-left: none; border-top: none; }
+
+/* Botones Estilo Fogata / Menú */
+.ds-button {
+  background: linear-gradient(180deg, #2a231b 0%, #14100c 100%);
+  border: 1px solid var(--ds-border-gold);
+  color: var(--ds-gold-main);
+  font-family: var(--ds-font-heading);
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.ds-button:hover {
+  color: #fff;
+  border-color: var(--ds-gold-bright);
+  box-shadow: 0 0 15px rgba(230, 194, 120, 0.4), inset 0 0 10px rgba(242, 160, 7, 0.2);
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+}
+
+.ds-button:active {
+  transform: translateY(1px);
+}
+
+/* Mensajes de Estado (You Died / Bonfire Lit) */
+.ds-banner {
+  width: 100%;
+  padding: 2rem 0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.85);
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  margin: 3rem 0;
+}
+
+/* Cartel "YOU DIED" */
+.ds-you-died {
+  font-family: var(--ds-font-heading);
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--ds-you-died-red);
+  letter-spacing: 0.3em;
+  text-shadow: 0 0 20px var(--ds-you-died-glow), 0 0 40px #000;
+  animation: deathFadeIn 3s ease-in-out infinite alternate;
+}
+
+@keyframes deathFadeIn {
+  0% {
+    opacity: 0.6;
+    letter-spacing: 0.25em;
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: 0.35em;
+    filter: blur(0px);
+  }
+}
+
+/* Cartel "BONFIRE LIT" */
+.ds-bonfire-lit {
+  font-family: var(--ds-font-heading);
+  font-size: 3rem;
+  color: var(--ds-bonfire-yellow);
+  letter-spacing: 0.25em;
+  text-shadow: 0 0 15px var(--ds-bonfire-orange), 0 0 30px var(--ds-bonfire-yellow);
+  animation: bonfireGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes bonfireGlow {
+  0% { text-shadow: 0 0 10px var(--ds-bonfire-orange); }
+  100% { text-shadow: 0 0 25px var(--ds-bonfire-yellow), 0 0 40px var(--ds-bonfire-orange); }
+}
+
+/* Citas / Descripción de Objetos */
+blockquote {
+  border-left: 2px solid var(--ds-gold-dim);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--ds-text-muted);
+}
